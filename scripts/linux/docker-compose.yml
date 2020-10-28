@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  loctio_ue_x86_64:
+    image: ${ECR}/loctio_ue_x86_64:latest
+    container_name: loctio_ue
+    restart: always
+    mac_address: ${MAC_ADDRESS}
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 20000
+        hard: 40000
+    environment:
+    - LOGLEVEL=INFO
+    - MQTT_BROKER_IP=${CLOUD_API_HOST}
+    - MQTT_BROKER_PORT=1883
+    - TOKEN=ZnwwYvq5iQz1uHCw7L0p8-Q9_HpHma20
+    - GROUND_TRUTH=[38.270181,21.7638,60]
+    - SNAPSHOT_SAMPLE_PATH=/tmp/sample.bin
+    devices:
+    - "/dev/tty:/dev/tty"
+    volumes:
+    - /var/tmp:/tmp
