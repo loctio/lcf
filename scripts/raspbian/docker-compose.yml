@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  loctio_ue_arm:
+    image: ${ECR}/loctio_ue_arm:latest
+    container_name: loctio_ue
+    restart: always
+    mac_address: ${MAC_ADDRESS}
+    environment:
+    - LOGLEVEL=INFO
+    - MQTT_BROKER_IP=${CLOUD_API_HOST}
+    - MQTT_BROKER_PORT=1883
+    - TOKEN=ZnwwYvq5iQz1uHCw7L0p8-Q9_HpHma20
+    - GROUND_TRUTH=[38.270181,21.7638,60]
+    - LD_LIBRARY_PATH=resources/executables/raspbian/
+    - COMMAND_TO_GET_SAMPLE=resources/executables/raspbian/rtl_sdr
+    - COMMAND_TO_GET_SAMPLE_ARG_CAPTURE_FREQ=-f
+    - COMMAND_TO_GET_SAMPLE_ARG_SAMPLING_FREQ=-s
+    - COMMAND_TO_GET_SAMPLE_ARG_SAMPLES_NUM=-n
+    - COMMAND_TO_COMPRESS_SAMPLE=resources/executables/raspbian/msbCompress
+    - COMMAND_TO_BIAST=resources/executables/raspbian/rtl_biast
+    - COMMAND_TO_BIAST_ARG=-b
+    - COMMAND_TO_BIAST_FLAG=1
+    devices:
+    - "${RTL_SDR_BUS}:${RTL_SDR_BUS}"
+    volumes:
+    - /tmp:/tmp
