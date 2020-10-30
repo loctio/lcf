@@ -12,7 +12,7 @@ BUS_VALUE="/dev/bus/usb/$BUS/$DEV"
 
 echo "MAC_ADDRESS=${MAC_ADDRESS}" > .env-cloud
 echo "RTL_SDR_BUS=${BUS_VALUE}" >> .env-cloud
-echo "CLOUD_API_HOST=loctio-api.ddns.net" >> .env-cloud
+echo "CLOUD_API_HOST=api.loctio.com" >> .env-cloud
 echo "ECR=810204744368.dkr.ecr.eu-central-1.amazonaws.com" >> .env-cloud
 
 docker-compose --env-file .env-cloud -f docker-compose.yml down
