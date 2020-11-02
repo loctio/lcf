@@ -14,7 +14,7 @@ services:
     - LOGLEVEL=INFO
     - MQTT_BROKER_IP=${CLOUD_API_HOST}
     - MQTT_BROKER_PORT=1883
-    - TOKEN=ZnwwYvq5iQz1uHCw7L0p8-Q9_HpHma20
+    - TOKEN=
     - GROUND_TRUTH=[38.270181,21.7638,60]
     - SNAPSHOT_SAMPLE_PATH=/tmp/sample.bin
     devices:
