@@ -12,6 +12,7 @@ services:
         hard: 40000
     environment:
     - LOGLEVEL=INFO
+    - SAMPLE_AS_BINARY=1
     - MQTT_BROKER_IP=${CLOUD_API_HOST}
     - MQTT_BROKER_PORT=1883
     - TOKEN=
