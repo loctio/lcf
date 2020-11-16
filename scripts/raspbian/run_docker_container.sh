@@ -17,5 +17,5 @@ echo "ECR=810204744368.dkr.ecr.eu-central-1.amazonaws.com" >> .env-cloud
 
 ./loctio_ue_raspbian.sh
 docker-compose --env-file .env-cloud -f docker-compose.yml down
-docker-compose --env-file .env-cloud -f docker-compose.yml --compatibility up -d loctio_ue_arm
+docker-compose --env-file .env-cloud -f docker-compose.yml --compatibility up -d loctio_ue_$(uname -m)
 docker logs -f loctio_ue
