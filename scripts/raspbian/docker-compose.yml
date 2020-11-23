@@ -25,6 +25,11 @@ services:
     - "${RTL_SDR_BUS}:${RTL_SDR_BUS}"
     volumes:
     - /tmp:/tmp
+    # dynamic linker is needed inside docker in RPI Zero (strings rtl_biast | head -1)
+    - /usr/lib/arm-linux-gnueabihf/libstdc++.so.6:/usr/lib/arm-linux-gnueabihf/libstdc++.so.6
+    - /lib/ld-linux-armhf.so.3:/lib/ld-linux-armhf.so.3
+    - /lib/arm-linux-gnueabihf/:/lib/arm-linux-gnueabihf/
+
   loctio_ue_armv7l:
     image: ${ECR}/loctio_ue_armv7l:latest
     container_name: loctio_ue
