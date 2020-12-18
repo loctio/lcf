@@ -5,7 +5,12 @@ AWS_ID="810204744368"
 AWS_REGION="eu-central-1"
 AWS_ECR_DOMAIN="$AWS_ID.dkr.ecr.$AWS_REGION.amazonaws.com"
 
-curl -fsSL -o docker-compose.yml https://raw.githubusercontent.com/loctio/lcf/master/scripts/linux/docker-compose.yml 
+if [ ! -f docker-compose.yml ];
+then
+  curl -fsSL -o docker-compose.yml https://raw.githubusercontent.com/loctio/lcf/master/scripts/linux/docker-compose.yml
+  echo "docker-compose.yml has been downloaded. Make the appropriate changes and rerun ./install.sh"
+  exit
+fi
 
 echo -n "AWS_ACCESS_KEY_ID: "
 read access_key
