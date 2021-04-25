@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   loctio_ue_armv6l:
-    image: ${ECR}/loctio_ue_armv6l:latest
+    image: ${ECR}/loctio/ue_armv6l:latest
     container_name: loctio_ue
     restart: always
     mac_address: ${MAC_ADDRESS}
@@ -30,7 +30,7 @@ services:
     - /lib/arm-linux-gnueabihf/:/lib/arm-linux-gnueabihf/
 
   loctio_ue_armv7l:
-    image: ${ECR}/loctio_ue_armv7l:latest
+    image: ${ECR}/loctio/ue_armv7l:latest
     container_name: loctio_ue
     restart: always
     mac_address: ${MAC_ADDRESS}
