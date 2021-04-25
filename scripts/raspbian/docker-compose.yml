@@ -11,7 +11,6 @@ services:
     - MQTT_BROKER_IP=${CLOUD_API_HOST}
     - MQTT_BROKER_PORT=1883
     - TOKEN=
-    - GROUND_TRUTH=[38.270181,21.7638,60]
     - LD_LIBRARY_PATH=resources/executables/raspbian/
     - COMMAND_TO_GET_SAMPLE=resources/executables/raspbian/rtl_sdr
     - COMMAND_TO_GET_SAMPLE_ARG_CAPTURE_FREQ=-f
@@ -41,7 +40,6 @@ services:
     - MQTT_BROKER_IP=${CLOUD_API_HOST}
     - MQTT_BROKER_PORT=1883
     - TOKEN=
-    - GROUND_TRUTH=[38.270181,21.7638,60]
     - LD_LIBRARY_PATH=resources/executables/raspbian/
     - COMMAND_TO_GET_SAMPLE=resources/executables/raspbian/rtl_sdr
     - COMMAND_TO_GET_SAMPLE_ARG_CAPTURE_FREQ=-f
