@@ -15,6 +15,7 @@ echo "CLOUD_API_HOST=api.loctio.com" >> .env-cloud
 echo "ECR=docker.io" >> .env-cloud
 source .env-cloud
 
+echo "Pulling docker image from $ECR"
 docker pull $ECR/loctio/ue_x86_64:latest
 
 docker-compose --env-file .env-cloud -f docker-compose.yml down
