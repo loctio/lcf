@@ -1,12 +1,13 @@
 #!/bin/bash
 
-ETHIF="eth0"
-
 if [ ! -f docker-compose.yml ];
 then
   curl -fsSL -o docker-compose.yml https://raw.githubusercontent.com/loctio/lcf/master/scripts/raspbian/docker-compose.yml
-  echo "docker-compose.yml has been downloaded. Make the appropriate changes and rerun ./install.sh"
-  exit
+  if [ $? -ne 0 ];
+  then
+    echo "Error occured during docker-compose.yml download. Please contact LCF administrator at lcf@loctio.com"
+    exit $?
+  fi
 fi
 
 apt list | grep usbutils
@@ -15,13 +16,17 @@ then
   sudo apt-get update && sudo apt-get install usbutils
 fi
 
-MAC_ADDRESS=$(ip link show $ETHIF | awk '/ether/ {print $2}')
+MAC_ADDRESS=$(ip link show eth0 | awk '/ether/ {print $2}')
 BUS=$(lsusb | grep RTL | cut -d' ' -f2,4 | cut -d':' -f1 | cut -d' ' -f1)
 BUS_VALUE="/dev/bus/usb/$BUS/$DEV"
+
+echo -n "Enter the API TOKEN you received in the LCF confirmation email: "
+read TOKEN
 
 echo "MAC_ADDRESS=${MAC_ADDRESS}" > .env-cloud
 echo "RTL_SDR_BUS=${BUS_VALUE}" >> .env-cloud
 echo "CLOUD_API_HOST=api.loctio.com" >> .env-cloud
+echo "TOKEN=${TOKEN}" >> .env-cloud
 echo "ECR=docker.io" >> .env-cloud
 source .env-cloud
 
