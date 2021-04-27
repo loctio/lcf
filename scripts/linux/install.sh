@@ -18,7 +18,7 @@ then
   echo "Error occured during $ETHIF configuration. Please contact LCF administrator at lcf@loctio.com"
   exit $?
 fi
-MAC_ADDRESS=$(echo $ETHIF_EXISTS | awk '/ether/ {print $2}')
+MAC_ADDRESS=$(echo $ETHIF_EXISTS | awk -F'/ether' '{print $2}' | tail -1 | cut -d' ' -f2)
 
 echo -n "Enter the API TOKEN you received in the LCF confirmation email: "
 read TOKEN
