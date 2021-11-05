@@ -24,7 +24,7 @@ echo -n "Enter the API TOKEN you received in the LCF confirmation email: "
 read TOKEN
 
 echo "MAC_ADDRESS=${MAC_ADDRESS}" > .env-cloud
-echo "CLOUD_API_HOST=api.loctio.com" >> .env-cloud
+echo "CLOUD_API_HOST=staging-api.loctio.com" >> .env-cloud
 echo "TOKEN=${TOKEN}" >> .env-cloud
 echo "ECR=docker.io" >> .env-cloud
 source .env-cloud
