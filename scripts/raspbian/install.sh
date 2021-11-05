@@ -25,7 +25,7 @@ read TOKEN
 
 echo "MAC_ADDRESS=${MAC_ADDRESS}" > .env-cloud
 echo "RTL_SDR_BUS=${BUS_VALUE}" >> .env-cloud
-echo "CLOUD_API_HOST=api.loctio.com" >> .env-cloud
+echo "CLOUD_API_HOST=staging-api.loctio.com" >> .env-cloud
 echo "TOKEN=${TOKEN}" >> .env-cloud
 echo "ECR=docker.io" >> .env-cloud
 source .env-cloud
