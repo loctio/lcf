@@ -10,6 +10,8 @@ services:
     - SAMPLE_AS_BINARY=1
     - MQTT_BROKER_IP=${CLOUD_API_HOST}
     - MQTT_BROKER_PORT=1883
+    - MQTT_BROKER_USERNAME=${USERNAME}
+    - MQTT_BROKER_PASSWORD=${PASSWORD}
     - TOKEN=${TOKEN}
     - LD_LIBRARY_PATH=resources/executables/raspbian/
     - COMMAND_TO_GET_SAMPLE=resources/executables/raspbian/rtl_sdr
@@ -20,6 +22,7 @@ services:
     - COMMAND_TO_BIAST=resources/executables/raspbian/rtl_biast
     - COMMAND_TO_BIAST_ARG=-b
     - COMMAND_TO_BIAST_FLAG=1
+    - MAX_BYTES_PER_CHUNK=1000000
     devices:
     - "${RTL_SDR_BUS}:${RTL_SDR_BUS}"
     volumes:
@@ -39,6 +42,8 @@ services:
     - SAMPLE_AS_BINARY=1
     - MQTT_BROKER_IP=${CLOUD_API_HOST}
     - MQTT_BROKER_PORT=1883
+    - MQTT_BROKER_USERNAME=${USERNAME}
+    - MQTT_BROKER_PASSWORD=${PASSWORD}
     - TOKEN=${TOKEN}
     - LD_LIBRARY_PATH=resources/executables/raspbian/
     - COMMAND_TO_GET_SAMPLE=resources/executables/raspbian/rtl_sdr
@@ -49,6 +54,7 @@ services:
     - COMMAND_TO_BIAST=resources/executables/raspbian/rtl_biast
     - COMMAND_TO_BIAST_ARG=-b
     - COMMAND_TO_BIAST_FLAG=1
+    - MAX_BYTES_PER_CHUNK=1000000
     devices:
     - "${RTL_SDR_BUS}:${RTL_SDR_BUS}"
     volumes:
