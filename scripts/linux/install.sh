@@ -10,15 +10,16 @@ then
   fi
 fi
 
-echo -n "Enter network interface name that will connect to LCF: "
-read ETHIF
-ETHIF_EXISTS=$(ip link show $ETHIF)
-if [ $? -ne 0 ];
-then
-  echo "Error occured during $ETHIF configuration. Please contact LCF administrator at lcf@loctio.com"
-  exit $?
-fi
-MAC_ADDRESS=$(echo $ETHIF_EXISTS | awk -F'/ether' '{print $2}' | tail -1 | cut -d' ' -f2)
+while true
+do
+  echo -n "Enter network interface name that will connect to LCF (e.g. eth0): "
+  read ETHIF
+  MAC_ADDRESS=$(echo $ETHIF | awk -F'/ether' '{print $2}' | tail -1 | cut -d' ' -f2)
+  if [ "$MAC_ADDRESS" != "" ];
+  then
+    break 
+  fi 
+done
 
 echo -n "Enter the API TOKEN you received in the LCF confirmation email: "
 read TOKEN
