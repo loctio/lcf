@@ -18,9 +18,9 @@ fi
 
 while true
 do
-  echo -n "Enter the network interface name that is able to access the internet (e.g. eth0): "
-  read ETH_NAME
-  MAC_ADDRESS=$(ip link show $ETH_NAME | awk '/ether/ {print $2}')
+  echo -n "Enter network interface name that will connect to LCF (e.g. eth0): "
+  read ETHIF
+  MAC_ADDRESS=$(ip link show $ETHIF | awk '/ether/ {print $2}')
   if [ "$MAC_ADDRESS" != "" ];
   then
     break 
