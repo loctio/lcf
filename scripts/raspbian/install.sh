@@ -16,7 +16,17 @@ then
   sudo apt-get update && sudo apt-get install usbutils
 fi
 
-MAC_ADDRESS=$(ip link show eth0 | awk '/ether/ {print $2}')
+while true
+do
+  echo -n "Enter the network interface name that is able to access the internet (e.g. eth0): "
+  read ETH_NAME
+  MAC_ADDRESS=$(ip link show $ETH_NAME | awk '/ether/ {print $2}')
+  if [ "$MAC_ADDRESS" != "" ];
+  then
+    break 
+  fi 
+done
+
 BUS=$(lsusb | grep RTL | cut -d' ' -f2,4 | cut -d':' -f1 | cut -d' ' -f1)
 BUS_VALUE="/dev/bus/usb/$BUS/$DEV"
 
