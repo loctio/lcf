@@ -21,11 +21,17 @@ do
   fi 
 done
 
+echo -n "Enter the username you use in the LCF Web UI: "
+read USERNAME
+read -sp "Enter the password you use in the LCF Web UI: " PASSWORD
+echo
 echo -n "Enter the API TOKEN you received in the LCF confirmation email: "
 read TOKEN
 
 echo "MAC_ADDRESS=${MAC_ADDRESS}" > .env-cloud
 echo "CLOUD_API_HOST=staging-api.loctio.com" >> .env-cloud
+echo "USERNAME=${USERNAME}" >> .env-cloud
+echo "PASSWORD=${PASSWORD}" >> .env-cloud
 echo "TOKEN=${TOKEN}" >> .env-cloud
 echo "ECR=docker.io" >> .env-cloud
 source .env-cloud
