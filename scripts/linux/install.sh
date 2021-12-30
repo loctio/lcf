@@ -14,11 +14,11 @@ while true
 do
   echo -n "Enter network interface name that will connect to LCF (e.g. eth0): "
   read ETHIF
-  MAC_ADDRESS=$(echo $ETHIF | awk -F'/ether' '{print $2}' | tail -1 | cut -d' ' -f2)
+  MAC_ADDRESS=$(ip link show $ETHIF | awk '/ether/ {print $2}')
   if [ "$MAC_ADDRESS" != "" ];
   then
-    break 
-  fi 
+    break
+  fi
 done
 
 echo -n "Enter the username you use in the LCF Web UI: "
